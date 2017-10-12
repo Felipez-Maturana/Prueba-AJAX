@@ -12,8 +12,8 @@ class CompaniesController < ApplicationController
   def new_complaint
     @complaint = Complaint.new
     @complaint.id = 1+ (Complaint.last.id)
-    @complaint.user = current_user
-    @complaint.company = Company.last
+    # @complaint.user = current_user
+    # @complaint.company = Company.last
     @complaint.name = params[:complaint_name]
     @complaint.description = params[:complaint_description]
 

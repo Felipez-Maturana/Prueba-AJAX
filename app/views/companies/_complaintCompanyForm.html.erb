@@ -21,10 +21,10 @@
     <%= f.text_area :description %>
   </div>
 
-  <% if current_user.present? %>
-    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+  <% if !current_user.nil? %>
+    <input type="hidden" name="user_id" value="<%= user.id %>">
   <% end %>
-  <input type="hidden" name="company_id" value="<%= @company_id %>">
+  <input type="hidden" name="company_id" value="<%= company.id %>">
 
 
   <div class="actions">
