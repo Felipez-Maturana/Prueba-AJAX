@@ -24,6 +24,14 @@ class ComplaintsController < ApplicationController
   # POST /complaints
   # POST /complaints.json
   def create
+    @complaint = Complaint.new(complaint_params)
+    @complaint.id = 1+ (Complaint.last.id)
+    @complaint.user = current_user
+    @complaint.company = Company.last
+    @complaint.name = params[:complaint_name]
+    @complaint.description = params[:complaint_description]
+
+    @complaint.save
     respond_to do |format|
       if @complaint.save
         format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
