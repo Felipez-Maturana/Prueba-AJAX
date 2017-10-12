@@ -1,0 +1,8 @@
+<% complaints.each do |complaint| %>
+  <tr>
+    <td><%= complaint.name %></td>
+    <td><%= complaint.description %></td>
+    <td><%= complaint.user.email %></td>
+    <td><%= complaint.created_at %></td>
+  </tr>
+<% end %>

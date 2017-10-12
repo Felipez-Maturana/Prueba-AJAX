@@ -1,0 +1,37 @@
+<input id="companyroute" type="hidden" name="" value="<%= company_path(@company) %>">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
+
+<br>
+<h3>List of Complaints</h3>
+<%= form_tag(company_path(@company), :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by User" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>User's Email</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= render 'complaintsTable', complaints: @complaints %>
+
+  </tbody>
+</table>
+
+
+<br>
+<h3>New Complaint AJAX</h3>
+<p><%= render 'complaintCompanyForm', complaint: @complaint %></p>
